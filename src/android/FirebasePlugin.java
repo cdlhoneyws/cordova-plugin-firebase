@@ -79,6 +79,7 @@ public class FirebasePlugin extends CordovaPlugin {
 
     @Override
     protected void pluginInitialize() {
+        final Context context = this.cordova.getActivity().getApplicationContext();
         final Bundle extras = this.cordova.getActivity().getIntent().getExtras();
         this.cordova.getThreadPool().execute(new Runnable() {
             public void run() {
