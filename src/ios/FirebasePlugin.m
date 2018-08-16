@@ -55,6 +55,7 @@ static FirebasePlugin *firebasePlugin;
 
     if ([FIRApp defaultApp] == nil) {
       [FIRApp configure];
+      self.firebaseInit = YES;
     }
 
     [Fabric with:@[[Crashlytics class]]];
