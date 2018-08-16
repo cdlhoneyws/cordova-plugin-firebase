@@ -52,6 +52,26 @@ static FirebasePlugin *firebasePlugin;
     self.analyticsInit = NO;
     self.remoteconfigInit = NO;
     self.performanceInit = NO;
+
+    if ([FIRApp defaultApp] == nil) {
+      [FIRApp configure];
+    }
+
+    [Fabric with:@[[Crashlytics class]]];
+    if ([Crashlytics sharedInstance] != nil) {
+        self.crashlyticsInit = YES;
+    }
+    
+    if ([FIRAnalyticsConfiguration sharedInstance] != nil) {
+        [[FIRAnalyticsConfiguration sharedInstance] setAnalyticsCollectionEnabled:YES];
+        self.analyticsInit = YES;
+    }
+
+     if ([FIRPerformance sharedInstance] != nil) {
+        [[FIRPerformance sharedInstance] setDataCollectionEnabled:YES];
+        self.performanceInit = YES;
+    }
+    
 }
 
 - (void)initFirebase:(CDVInvokedUrlCommand *)command {
