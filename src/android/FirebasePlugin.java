@@ -227,6 +227,9 @@ public class FirebasePlugin extends CordovaPlugin {
         } else if (action.equals("clearAllNotifications")) {
             this.clearAllNotifications(callbackContext);
             return true;
+        } else if (action.equals("crash")) {
+            this.crash(callbackContext);
+            return true;
         }
 
         return false;
