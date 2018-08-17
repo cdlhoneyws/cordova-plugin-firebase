@@ -1208,4 +1208,11 @@ public class FirebasePlugin extends CordovaPlugin {
             }
         });
     }
+    public void crash(final CallbackContext callbackContext) {
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                Crashlytics.getInstance().crash();
+            }
+        });
+    }
 }
